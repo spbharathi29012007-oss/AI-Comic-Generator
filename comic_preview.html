@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comic Preview</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .panel {
+            background: white;
+            width: 80%;
+            margin: 25px auto;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px #ccc;
+        }
+
+        .panel h2 {
+            color: #444;
+        }
+
+        .panel img {
+            width: 500px;
+            max-width: 100%;
+            display: block;
+            margin: 15px auto;
+        }
+
+        .description {
+            font-style: italic;
+            color: #555;
+        }
+
+        .caption {
+            font-weight: bold;
+        }
+
+        .narration {
+            color: #444;
+        }
+
+        .export-button {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 12px;
+            text-align: center;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .export-button:hover {
+            background: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🎨 Comic Preview</h1>
+
+    {% for panel in panels %}
+
+    <div class="panel">
+
+        <h2>{{ panel.title }}</h2>
+
+        {% if panel.image %}
+        <img src="{{ panel.image }}" alt="Comic Panel">
+        {% endif %}
+
+        <p class="description">
+            {{ panel.description }}
+        </p>
+
+        <p class="caption">
+            Caption: {{ panel.caption }}
+        </p>
+
+        <p class="narration">
+            Narration: {{ panel.narration }}
+        </p>
+
+    </div>
+
+    {% endfor %}
+
+    <a href="/export" class="export-button">
+        Export Comic as PDF
+    </a>
+
+</body>
+</html>
